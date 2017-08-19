@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        h1 {
+            text-align: center;
+            color: #cca11e;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .countdown {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .countdown--item, .countdown span {
+            display: inline-block;
+            font-size: 40px;
+            color: red;
+        }
+        .countdown__txt {
+            color: #000;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>countdown</h1>
+
+<div class="countdown">
+    <div class="countdown--item countdown__txt">d:</div>
+    <div class="countdown--item countdown__day"></div>
+
+    <div class="countdown--item countdown__txt">h:</div>
+    <div class="countdown--item countdown__hour"></div>
+
+    <div class="countdown--item countdown__txt">m:</div>
+    <div class="countdown--item countdown__min"></div>
+
+    <div class="countdown--item countdown__txt">s:</div>
+    <div class="countdown--item countdown__sec"></div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="countdown.js"></script>
+<script>
+    countdown({
+        year: 2020,
+        month: 8,
+        day: 19,
+        hour: 13,
+        min: 15,
+        callback: function (d, h, m, s) {
+            $('.countdown__day').html(d);
+            $('.countdown__hour').html(h);
+            $('.countdown__min').html(m);
+            $('.countdown__sec').html(s);
+        },
+
+        end: function () {
+            console.log('Time is over');
+        },
+        
+        expired: function () {
+            console.log('The set date has expired');
+
+            $('.countdown__day').html('00');
+            $('.countdown__hour').html('00');
+            $('.countdown__min').html('00');
+            $('.countdown__sec').html('00');
+        }
+    })
+</script>
+
+</body>
+</html>
